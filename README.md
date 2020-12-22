@@ -3,8 +3,8 @@
   
 ## Como executar localmente: 
 * Instale e use o postgresql.
-* Crie um login/Group Roles no postgresql com usuario e senha ecommerceSimples.
-* Crie um banco de dados com o owner ecommerceSimples criado anteriormente.
+* Crie um login/Group Roles no postgresql com usuario e senha ecommercesimples.
+* Crie um banco de dados com o owner ecommercesimples criado anteriormente.
 
 ```
 ./mvnw 

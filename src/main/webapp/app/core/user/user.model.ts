@@ -1,34 +1,34 @@
-// import { Moment } from 'moment';
+import { Moment } from 'moment';
 
-// export interface ICliente {
-//   dataNascimento?: Moment;
-//   cpf?: string;
-//   fone?: string;
-//   celular?: string;
-//   logradouro?: string;
-//   numero?: string;
-//   complemento?: string;
-//   bairro?: string;
-//   cidade?: string;
-//   cep?: string;
-//   uf?: string;
-// }
+export interface ICliente {
+  dataNascimento?: Moment;
+  cpf?: string;
+  fone?: string;
+  celular?: string;
+  logradouro?: string;
+  numero?: string;
+  complemento?: string;
+  bairro?: string;
+  cidade?: string;
+  cep?: string;
+  uf?: string;
+}
 
-// export class Cliente implements ICliente {
-//   constructor(
-//     public dataNascimento?: Moment,
-//     public cpf?: string,
-//     public fone?: string,
-//     public celular?: string,
-//     public logradouro?: string,
-//     public numero?: string,
-//     public complemento?: string,
-//     public bairro?: string,
-//     public cidade?: string,
-//     public cep?: string,
-//     public uf?: string
-//   ) {}
-// }
+export class Cliente implements ICliente {
+  constructor(
+    public dataNascimento?: Moment,
+    public cpf?: string,
+    public fone?: string,
+    public celular?: string,
+    public logradouro?: string,
+    public numero?: string,
+    public complemento?: string,
+    public bairro?: string,
+    public cidade?: string,
+    public cep?: string,
+    public uf?: string
+  ) {}
+}
 
 export interface IUser {
   id?: any;
@@ -44,7 +44,7 @@ export interface IUser {
   lastModifiedBy?: string;
   lastModifiedDate?: Date;
   password?: string;
-  // cliente?: ICliente;
+  cliente?: ICliente;
 }
 
 export class User implements IUser {
@@ -62,6 +62,6 @@ export class User implements IUser {
     public lastModifiedBy?: string,
     public lastModifiedDate?: Date,
     public password?: string,
-    // public cliente?: ICliente,
+    public cliente?: ICliente,
   ) {}
 }

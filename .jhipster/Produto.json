@@ -1,0 +1,50 @@
+{
+  "name": "Produto",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "preco",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "categoria",
+      "otherEntityRelationshipName": "produtos",
+      "relationshipName": "categorias",
+      "otherEntityField": "nome",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "pedido",
+      "otherEntityRelationshipName": "produtos",
+      "relationshipName": "pedidos",
+      "otherEntityField": "instante",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20201222205221",
+  "javadoc": "The Produto entity.\\n@author A true hipster",
+  "entityTableName": "produto",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

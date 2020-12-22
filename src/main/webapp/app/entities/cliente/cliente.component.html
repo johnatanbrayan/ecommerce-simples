@@ -1,0 +1,61 @@
+<div class="card shadow-lg p-4">
+    <h2 class="mb-4" id="page-heading">
+        <span jhiTranslate="arqueoprojectApp.cliente.home.title">Clientes</span>
+        <button id="jh-create-entity" class="btn btn-primary redondo float-right jh-create-entity create-cliente"
+            [routerLink]="['/cliente/new']">
+            <fa-icon icon="plus"></fa-icon>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="clientes?.length === 0">
+        <span jhiTranslate="arqueoprojectApp.cliente.home.notFound">No clientes found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="clientes && clientes.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col" jhiSortBy="nome"><span jhiTranslate="arqueoprojectApp.cliente.nome">Nome</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cliente of clientes ;trackBy: trackId">                    
+                    <td>{{ cliente.nome }}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit" [routerLink]="['/cliente', cliente.id, 'view']"
+                                class="btn btn-info btn-sm"  title="Visualizar">
+                                <fa-icon icon="eye"></fa-icon>
+                            </button>
+                            <button type="submit" [routerLink]="['/cliente', cliente.id, 'edit']"
+                                class="btn btn-primary btn-sm"  title="Editar">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                            </button>
+                            <button type="submit" (click)="delete(cliente)" class="btn btn-danger btn-sm"  title="Excluir">
+                                <fa-icon icon="trash-alt"></fa-icon>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="clientes && clientes.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage"
+                [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)">
+            </ngb-pagination>
+        </div>
+    </div>
+</div>

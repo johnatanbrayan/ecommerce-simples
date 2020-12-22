@@ -90,20 +90,20 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @BatchSize(size = 20)
     private Set<Authority> authorities = new HashSet<>();
 
-    // @Embedded
-    // @AttributeOverrides({
-    //     @AttributeOverride( name = "cpf", column = @Column(name = "cpf")),
-    //     @AttributeOverride( name = "dataNascimento", column = @Column(name = "data_nascimento")),
-    //     @AttributeOverride( name = "fone", column = @Column(name = "fone")),
-    //     @AttributeOverride( name = "celular", column = @Column(name = "celular")),
-    //     @AttributeOverride( name = "logradouro", column = @Column(name = "logradouro")),
-    //     @AttributeOverride( name = "complemento", column = @Column(name = "complemento")),
-    //     @AttributeOverride( name = "bairro", column = @Column(name = "bairro")),
-    //     @AttributeOverride( name = "cidade", column = @Column(name = "cidade")),
-    //     @AttributeOverride( name = "cep", column = @Column(name = "cep")),
-    //     @AttributeOverride( name = "uf", column = @Column(name = "uf")),
-    // })
-    // private Cliente cliente;
+    @Embedded
+    @AttributeOverrides({
+        @AttributeOverride( name = "cpf", column = @Column(name = "cpf")),
+        @AttributeOverride( name = "dataNascimento", column = @Column(name = "data_nascimento")),
+        @AttributeOverride( name = "fone", column = @Column(name = "fone")),
+        @AttributeOverride( name = "celular", column = @Column(name = "celular")),
+        @AttributeOverride( name = "logradouro", column = @Column(name = "logradouro")),
+        @AttributeOverride( name = "complemento", column = @Column(name = "complemento")),
+        @AttributeOverride( name = "bairro", column = @Column(name = "bairro")),
+        @AttributeOverride( name = "cidade", column = @Column(name = "cidade")),
+        @AttributeOverride( name = "cep", column = @Column(name = "cep")),
+        @AttributeOverride( name = "uf", column = @Column(name = "uf")),
+    })
+    private Cliente cliente;
 
     public Long getId() {
         return id;
@@ -210,12 +210,12 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.authorities = authorities;
     }
 
-    // public Cliente getCliente() {
-    //     return cliente;
-    // }
-    // public void setCliente(Cliente cliente) {
-    //     this.cliente = cliente;
-    // }
+    public Cliente getCliente() {
+        return cliente;
+    }
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 
     @Override
     public boolean equals(Object o) {

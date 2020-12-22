@@ -3,6 +3,7 @@ package br.com.johnatanbrayan.service.dto;
 import br.com.johnatanbrayan.config.Constants;
 
 import br.com.johnatanbrayan.domain.Authority;
+import br.com.johnatanbrayan.domain.Cliente;
 import br.com.johnatanbrayan.domain.User;
 
 import javax.validation.constraints.*;
@@ -50,6 +51,8 @@ public class UserDTO {
 
     private Set<String> authorities;
 
+    private Cliente cliente;
+
     public UserDTO() {
         // Empty constructor needed for Jackson.
     }
@@ -70,6 +73,8 @@ public class UserDTO {
         this.authorities = user.getAuthorities().stream()
             .map(Authority::getName)
             .collect(Collectors.toSet());
+
+        this.cliente = user.getCliente();
     }
 
     public Long getId() {
@@ -174,6 +179,14 @@ public class UserDTO {
 
     public void setAuthorities(Set<String> authorities) {
         this.authorities = authorities;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setAssociado(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     // prettier-ignore

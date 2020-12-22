@@ -1,0 +1,47 @@
+{
+  "name": "Pedido",
+  "fields": [
+    {
+      "fieldName": "instante",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "pagamento",
+      "otherEntityRelationshipName": "pedido",
+      "relationshipName": "pagamento",
+      "otherEntityField": "estadoPagamento",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "pedido",
+      "relationshipName": "user",
+      "otherEntityField": "firstName"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "produto",
+      "otherEntityRelationshipName": "pedidos",
+      "relationshipName": "produtos",
+      "otherEntityField": "nome",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20201222205321",
+  "javadoc": "The Pedido entity.\\n@author A true hipster",
+  "entityTableName": "pedido",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

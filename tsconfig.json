@@ -1,0 +1,16 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    }
+    // {
+    //   "path": "./tsconfig.e2e.json"
+    // }
+  ],
+  "compilerOptions": {
+    "outDir": "./dist" /* Redirect output structure to the directory. */,
+    "rootDir": "./src",
+    "experimentalDecorators": true /* Enables experimental support for ES7 decorators. */
+  }
+}

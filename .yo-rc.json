@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "br.com.johnatanbrayan",
+      "nativeLanguage": "pt-br"
+    },
+    "jhipsterVersion": "6.10.1",
+    "applicationType": "monolith",
+    "baseName": "ecommercesimples",
+    "packageName": "br.com.johnatanbrayan",
+    "packageFolder": "br/com/johnatanbrayan",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NjRhYTVlNzFlMGNjNDliZThkNDA5NWZhMWNhMDFmOWY1MTg2MzM5YTc0YTg0ZTYxZDllMzhiMjIwNmI0ZjY0NzdkZDAzZTI2OTQ3ZjFkY2EzNzE0NWUwZGI0Y2NiYmM5MmFkY2JlNjJjYzFiYTEyZmE4MzFkZjViOTliYjVmMzY=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1596481539414,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "pt-br",
+    "languages": ["pt-br"],
+    "blueprints": []
+  }
+}

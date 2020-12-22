@@ -1,0 +1,93 @@
+<span [ngSwitch]="isAuthenticated()">
+    <aside class="sidebar shadow" *ngSwitchCase="true">
+        <div >
+            <div class="sidebar-profile d-flex flex-column justify-content-center pt-5 pb-3">
+                <div class="picture-wrapper mb-4">
+                    <div class="user-picture m-auto">
+                        <img src="./../../../content/images/user.jpg" class="img-fluid" alt="">
+                    </div>
+                </div>
+                <div class="profile-details text-center pb-4">
+                    <small class="text-uppercase role">Olá usuário!</small>
+                </div>
+            </div>
+
+        </div>
+        <div class="sidebar-search pt-1 pb-1 pl-3 pr-3">
+            <input type="search" class="form-control rounded-pill" name="search" placeholder="Search ...">
+        </div>
+
+        <nav class="sidebar-menu pt-3 pb-3">
+            <div class="menu-header mt-3 mb-2">
+                Components
+            </div>
+
+            <ul class="menu-items">
+
+                <li><a (click)="isCollapsed1 = !isCollapsed1" [attr.aria-expanded]="!isCollapsed1"
+                    ngbTooltip="Usuários" placement="right" [openDelay]="300">
+
+                    <fa-icon *ngIf="isCollapsed1" icon="chevron-down"></fa-icon>
+                    <fa-icon *ngIf="!isCollapsed1" icon="chevron-up"></fa-icon>
+                    <span>Usuários</span>
+                </a>
+
+                <ul id="submenu-user" [@smoothCollapse]="isCollapsed1?'initial':'final'">
+                    <li>
+                        <a href="#" routerLink="admin/user-management" routerLinkActive="active"
+                            ngbTooltip="Admin" placement="right" [openDelay]="300">
+                            <fa-icon icon="user"></fa-icon>
+                            <span>Admin</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" [routerLink]="['cliente']"
+                            routerLinkActive="active" ngbTooltip="Clientes" placement="right">
+                            <fa-icon [icon]="['far','address-card']"></fa-icon>
+                            <span>Cliente</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+                <!--Collapse Configuracoes-->
+                <li>
+                  <a (click)="isCollapsed2 = !isCollapsed2" [attr.aria-expanded]="!isCollapsed2"
+                      aria-controls="submenu-1" ngbTooltip="Configurações" placement="right" [openDelay]="300">
+                      <fa-icon *ngIf="isCollapsed2" icon="chevron-down"></fa-icon>
+                      <fa-icon *ngIf="!isCollapsed2" icon="chevron-up"></fa-icon>
+                      <span>Configurações</span>
+                  </a>
+                   <ul id="submenu-1" [@smoothCollapse]="isCollapsed2?'initial':'final'">
+                        <li>
+                            <a
+                              ngbTooltip="Produtos" placement="right" [openDelay]="300" href="#"
+                              routerLink="produto" routerLinkActive="active">
+                                <fa-icon icon="box-open"></fa-icon>
+                                <span>Produto</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a
+                              ngbTooltip="Categorias" placement="right" [openDelay]="300" href="#"
+                              routerLink="categoria" routerLinkActive="active">
+                                   <fa-icon icon="cube"></fa-icon>
+                                <span>Categoria</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a
+                              ngbTooltip="Pagamentos" placement="right" [openDelay]="300" href="#"
+                              routerLink="pagamento" routerLinkActive="active">
+                                   <fa-icon icon="money-bill-wave"></fa-icon>
+                                <span>Pagamento</span>
+                            </a>
+                        </li>
+                   </ul>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+</span>

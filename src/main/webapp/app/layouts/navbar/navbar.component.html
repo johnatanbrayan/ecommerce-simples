@@ -1,0 +1,88 @@
+<span [ngSwitch]="isAuthenticated()">
+    <nav class="navbar navbar-expand-md fixed-top flex-fill">
+
+        <!-- header -->
+        <div class="navbar-header pl-2 pr-2 ml-4 text-center">
+            <a class="navbar-brand m-0 w-100" href="#" 
+            routerLink="/" 
+            routerLinkActive="active">
+                <img src="./../../../content/images/logo-branca.png" alt="lightning logo" width="35px;">
+                  <span class="ml-1 timeless" style="font-size:1.3rem" >Ecommerce Simples</span>
+            </a>
+        </div>
+
+        <!-- sidebar toggler -->
+        <div class="sidebar-toggler ml-auto mr-4">
+            <a *ngSwitchCase="true"  class="btn nav-link" (click)="toggleSidebar()">             
+                <fa-icon icon="bars"></fa-icon>       
+            </a>
+        </div>
+
+        <!-- right menu toggler
+        <div class="nav-toggler-right mr-4 d-md-none" (click)="toggleSidebarPin()">
+            <button class="" type="button"
+                    aria-controls="collapseBasic">
+                <img src="./../../../content/images/logo.png" class="img-fluid" alt="">
+            </button>
+            <span class="user-profile nav-alert bg-danger"></span>
+        </div> -->
+
+        <!-- left box -->
+        <ul  class="navbar-nav flex-fill mt-1 align-items-center left-nav">
+            <li *ngSwitchCase="true" class="nav-item navicon" style="padding: 12px;">
+                <a class="btn nav-link" (click)="toggleSidebarPin()">                   
+                    <fa-icon icon="bars"></fa-icon>       
+                </a>
+            </li>
+        </ul>
+
+        <!-- right menu -->
+        <div ngbDropdown placement="bottom-right" class="nav-item dropdown pointer mr-4" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu">
+                    <span *ngIf="!getImageUrl()">
+                        <fa-icon icon="user"></fa-icon>
+                    </span>
+                    <span *ngIf="getImageUrl()">
+                        <img [src]="getImageUrl()" class="profile-image rounded-circle" alt="Avatar">
+                    </span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right" ngbDropdownMenu  aria-labelledby="account-menu">
+                    <li *ngSwitchCase="true">
+                        <a class="dropdown-item" routerLink="account/settings" routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="wrench" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.account.settings">Settings</span>
+                        </a>
+                    </li>
+                    <li *ngSwitchCase="true">
+                        <a class="dropdown-item" routerLink="account/password" routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="lock" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.account.password">Password</span>
+                        </a>
+                    </li>
+                    <li *ngSwitchCase="true">
+                        <a class="dropdown-item" (click)="logout()" id="logout">
+                            <fa-icon icon="sign-out-alt" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.account.logout">Sign out</span>
+                        </a>
+                    </li>
+                    <li *ngSwitchCase="false">
+                        <a class="dropdown-item" (click)="login()" id="login">
+                            <fa-icon icon="sign-in-alt" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.account.login">Sign in</span>
+                        </a>
+                    </li>
+                    <li *ngSwitchCase="false">
+                        <a class="dropdown-item" routerLink="account/register" routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="user-plus" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.account.register">Register</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+    </nav>
+</span>
+
+
+
+

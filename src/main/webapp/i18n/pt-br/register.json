@@ -1,0 +1,31 @@
+{
+  "register": {
+    "title": "Cadastro",
+    "title.associado": "Cadastro Associado",
+    "form": {
+      "button": "Cadastrar",
+      "button.back": "Voltar"
+    },
+    "messages": {
+      "validate": {
+        "login": {
+          "required": "O usuário é obrigatório.",
+          "minlength": "O usuário deve ter pelo menos 1 caractere.",
+          "maxlength": "O usuário não pode ter mais de 50 caracteres.",
+          "pattern": "Your username is invalid."
+        },
+        "cpf": {
+          "required": "O CPF é obrigatório.",
+          "minlength": "O CPF deve ter pelo menos 14 dígitos.",
+          "pattern": "Your CPF is invalid."
+        }
+      },
+      "success": "<strong>Cadastro realizado com sucesso!</strong> Favor verificar seu e-mail para confirmar a conta.",
+      "error": {
+        "fail": "<strong>Erro ao realizar o cadastro!</strong> Favor tentar novamente mais tarde.",
+        "userexists": "<strong>Usuário já registrado!</strong> Favor escolher outro.",
+        "emailexists": "<strong>E-mail já está em uso!</strong> Por favor informe outro."
+      }
+    }
+  }
+}

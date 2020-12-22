@@ -1,0 +1,12 @@
+version: '2'
+services:
+  ecommercesimples-postgresql:
+    image: postgres:12.3
+    # volumes:
+    #     - ~/volumes/jhipster/ecommercesimples/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=ecommercesimples
+      - POSTGRES_PASSWORD=
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 5432:5432

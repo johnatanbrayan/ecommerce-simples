@@ -1,0 +1,103 @@
+/* ----------------------INICIO-PRODUTO------------------------ */
+/**
+ * The Produto entity.
+ * @author A true hipster
+ */
+entity Produto {
+  nome String required
+  preco BigDecimal required
+  status Boolean required
+}
+/**
+ * The Pedido entity.
+ * @author A true hipster
+ */
+entity Pedido {
+  instante Instant required
+}
+/**
+ * The Categoria entity.
+ * @author A true hipster
+ */
+entity Categoria {
+  nome String required
+  status Boolean required
+}
+/* ----------------------FIM-PRODUTO------------------------ */
+
+/* ----------------------INICIO-PAGAMENTO------------------------ */
+// TODO verificar como atribuir enum em um entidade
+/**
+ * The Pagamento entity.
+ * @author A true hipster
+ */
+entity Pagamento {
+  estadoPagamento Integer required
+}
+/**
+ * The PagamentoComBoleto entity.
+ * @author A true hipster
+ */
+entity PagamentoComBoleto {
+  dataVencimento LocalDate required
+  dataPagamento LocalDate
+}
+/**
+ * The PagamentoComCartao entity.
+ * @author A true hipster
+ */
+entity PagamentoComCartao {
+  numeroDeParcelas Integer required
+}
+/* ----------------------FIM-PAGAMENTO--------------------------- */
+
+/**
+ * The Cliente entity.
+ * @author A true hipster
+ */
+entity Cliente {
+  // nome String required
+  // email String required
+  // status Boolean required
+  dataNascimento LocalDate required
+  cpf String required
+  fone String maxlength(16) pattern(/(\(?\d{2}\)?\s)?(\d{4,5}\-\d{4})/)
+  celular String maxlength(16) pattern(/(\(?\d{2}\)?\s)?(\d{4,5}\-\d{4})/)
+  logradouro String maxlength(50) required
+  numero String maxlength(6) required
+  complemento String maxlength(30)
+  bairro String maxlength(50)
+  cidade String maxlength(50)
+  cep String maxlength(8) required
+  uf String required minlength(2) maxlength(2)
+}
+
+/* ----------------------INICIO-RELACIONAMENTOS--------------------------- */
+/**
+ * Many to One relationship.
+ */
+relationship ManyToOne {
+  Pedido{user(firstName)} to User
+}
+/**
+ * One to One relationship.
+ */
+relationship OneToOne {
+  Pedido{pagamento(estadoPagamento)} to Pagamento{pedido(instante)}
+}
+/**
+ * Many to Many relationship.
+ */
+relationship ManyToMany {
+  Produto{categorias(nome)} to Categoria{produtos(nome)}
+  Produto{pedidos(instante)} to Pedido{produtos(nome)}
+}
+
+/* ----------------------FIM-RELACIONAMENTOS--------------------------- */
+
+
+/* ----------------------INICIO-CONFIGURACOES--------------------------- */
+paginate * with pagination
+dto * with mapstruct
+service * with serviceClass
+/* ----------------------INICIO-CONFIGURACOES--------------------------- */

@@ -26,28 +26,12 @@ entity Categoria {
 /* ----------------------FIM-PRODUTO------------------------ */
 
 /* ----------------------INICIO-PAGAMENTO------------------------ */
-// TODO verificar como atribuir enum em um entidade
 /**
  * The Pagamento entity.
  * @author A true hipster
  */
 entity Pagamento {
-  estadoPagamento Integer required
-}
-/**
- * The PagamentoComBoleto entity.
- * @author A true hipster
- */
-entity PagamentoComBoleto {
-  dataVencimento LocalDate required
-  dataPagamento LocalDate
-}
-/**
- * The PagamentoComCartao entity.
- * @author A true hipster
- */
-entity PagamentoComCartao {
-  numeroDeParcelas Integer required
+  estadoPagamento String required
 }
 /* ----------------------FIM-PAGAMENTO--------------------------- */
 
@@ -74,12 +58,6 @@ entity Cliente {
 
 /* ----------------------INICIO-RELACIONAMENTOS--------------------------- */
 /**
- * Many to One relationship.
- */
-relationship ManyToOne {
-  Pedido{user(firstName)} to User
-}
-/**
  * One to One relationship.
  */
 relationship OneToOne {
@@ -92,7 +70,12 @@ relationship ManyToMany {
   Produto{categorias(nome)} to Categoria{produtos(nome)}
   Produto{pedidos(instante)} to Pedido{produtos(nome)}
 }
-
+/**
+ * Many to One relationship.
+ */
+relationship ManyToOne {
+  Pedido{user(firstName)} to User
+}
 /* ----------------------FIM-RELACIONAMENTOS--------------------------- */
 
 

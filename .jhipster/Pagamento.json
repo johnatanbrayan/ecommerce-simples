@@ -1,0 +1,31 @@
+{
+  "name": "Pagamento",
+  "fields": [
+    {
+      "fieldName": "estadoPagamento",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "pedido",
+      "otherEntityRelationshipName": "pagamento",
+      "relationshipName": "pedido",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20201227195332",
+  "javadoc": "The Pagamento entity.\\n@author A true hipster",
+  "entityTableName": "pagamento",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

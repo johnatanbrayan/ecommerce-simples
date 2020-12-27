@@ -1,0 +1,37 @@
+{
+  "name": "Categoria",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "produto",
+      "otherEntityRelationshipName": "categorias",
+      "relationshipName": "produtos",
+      "otherEntityField": "nome",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20201227195232",
+  "javadoc": "The Categoria entity.\\n@author A true hipster",
+  "entityTableName": "categoria",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

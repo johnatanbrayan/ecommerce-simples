@@ -1,28 +1,16 @@
 package br.com.johnatanbrayan.domain;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
-import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * The Cliente entity.\n@author A true hipster
  */
-@Entity
-@Table(name = "cliente")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class Cliente implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
-    private Long id;
+@Embeddable
+public class Cliente {
 
     @NotNull
     @Column(name = "data_nascimento", nullable = false)
@@ -73,15 +61,6 @@ public class Cliente implements Serializable {
     @Size(min = 2, max = 2)
     @Column(name = "uf", length = 2, nullable = false)
     private String uf;
-
-    // jhipster-needle-entity-add-field - JHipster will add fields here
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public LocalDate getDataNascimento() {
         return dataNascimento;
@@ -225,7 +204,6 @@ public class Cliente implements Serializable {
     public void setUf(String uf) {
         this.uf = uf;
     }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
     public boolean equals(Object o) {
@@ -235,7 +213,8 @@ public class Cliente implements Serializable {
         if (!(o instanceof Cliente)) {
             return false;
         }
-        return id != null && id.equals(((Cliente) o).id);
+        Cliente cliente = (Cliente) o;
+        return Objects.equals(cpf, cliente.cpf);
     }
 
     @Override
@@ -247,8 +226,7 @@ public class Cliente implements Serializable {
     @Override
     public String toString() {
         return "Cliente{" +
-            "id=" + getId() +
-            ", dataNascimento='" + getDataNascimento() + "'" +
+            "dataNascimento='" + getDataNascimento() + "'" +
             ", cpf='" + getCpf() + "'" +
             ", fone='" + getFone() + "'" +
             ", celular='" + getCelular() + "'" +

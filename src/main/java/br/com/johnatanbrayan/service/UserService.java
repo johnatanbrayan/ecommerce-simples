@@ -162,6 +162,11 @@ public class UserService {
                 .collect(Collectors.toSet());
             user.setAuthorities(authorities);
         }
+
+        if (userDTO.getCliente() != null) {
+            user.setCliente(userDTO.getCliente());
+        }
+
         userRepository.save(user);
         this.clearUserCaches(user);
         log.debug("Created Information for User: {}", user);
@@ -186,6 +191,9 @@ public class UserService {
                 user.setLastName(userDTO.getLastName());
                 if (userDTO.getEmail() != null) {
                     user.setEmail(userDTO.getEmail().toLowerCase());
+                }
+                if (userDTO.getCliente() != null) {
+                    user.setCliente(userDTO.getCliente());
                 }
                 user.setImageUrl(userDTO.getImageUrl());
                 user.setActivated(userDTO.isActivated());

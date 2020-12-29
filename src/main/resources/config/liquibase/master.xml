@@ -19,7 +19,9 @@
     <include file="config/liquibase/changelog/20201227195132_added_entity_Pedido.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20201227195232_added_entity_Categoria.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20201227195332_added_entity_Pagamento.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201227195432_added_entity_Cliente.xml" relativeToChangelogFile="false"/>
+
+    <include file="config/liquibase/changelog/20201227170100_added_collumns_on_entity_jhi_user.xml" relativeToChangelogFile="false"/>
+    
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20201227195032_added_entity_constraints_Produto.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20201227195132_added_entity_constraints_Pedido.xml" relativeToChangelogFile="false"/>

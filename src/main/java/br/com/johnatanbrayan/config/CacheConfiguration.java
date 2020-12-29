@@ -56,7 +56,6 @@ public class CacheConfiguration {
             createCache(cm, br.com.johnatanbrayan.domain.Categoria.class.getName());
             createCache(cm, br.com.johnatanbrayan.domain.Categoria.class.getName() + ".produtos");
             createCache(cm, br.com.johnatanbrayan.domain.Pagamento.class.getName());
-            createCache(cm, br.com.johnatanbrayan.domain.Cliente.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

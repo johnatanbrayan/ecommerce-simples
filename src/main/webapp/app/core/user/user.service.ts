@@ -82,13 +82,6 @@ export class UserService {
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
-  updateParceiroByTelaParceiro(user: IUser): Observable<EntityResponseType> {
-    const copy = this.convertDateFromClient(user);
-    return this.http
-      .put<IUser>(`${this.resourceUrl}/update-parceiro`, copy, { observe: 'response' })
-      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
-  }
-
   // find(login: string): Observable<IUser> {
   //   return this.http
   //     .get<IUser>(`${this.resourceUrl}/${login}`, { observe: 'response' })

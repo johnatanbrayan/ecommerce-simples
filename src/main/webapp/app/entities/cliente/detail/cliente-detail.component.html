@@ -17,7 +17,7 @@
                         <div class="form-group">
                             <label class="form-control-label" for="field_nome">Nome</label>
                             <input type="text" class="form-control" name="nome" id="field_nome"
-                                formControlName="firstName"/>
+                                [(ngModel)]="cliente.cliente.nome" disabled/>
 
                         </div>
                     </div>
@@ -34,26 +34,26 @@
                 <div class="row">
                     <div class="form-group col-sm-3">
                         <label class="form-control-label" for="cep">CEP</label>
-                        <input type="text" class="form-control" name="cep" id="cep" formControlName="cep"/>
+                        <input type="text" class="form-control" name="cep" id="cep" [(ngModel)]="cliente.cliente.cep" disabled/>
                     </div>
 
                     <div class="form-group col-sm-7">
                         <label class="form-control-label" for="logradouro">Logradouro</label>
                         <input type="text" class="form-control" name="logradouro" id="logradouro" 
-                            formControlName="logradouro">
+                            [(ngModel)]="cliente.cliente.logradouro" disabled>
                     </div>
 
                     <div class="form-group col-sm-2">
                         <label class="form-control-label" for="numero">Número</label>
                         <input type="number" class="form-control" name="numero" id="numero"
-                            formControlName="numero">
+                            [(ngModel)]="cliente.cliente.numero" disabled>
                     </div>
                 </div>
 
                 <div class="row d-flex justify-content-center">
                     <div class="form-group col-sm-12">
                         <label class="form-control-label" for="complemento">Complemento</label>
-                        <input type="text" class="form-control" name="complemento" id="complemento" formControlName="complemento">
+                        <input type="text" class="form-control" name="complemento" id="complemento" [(ngModel)]="cliente.cliente.complemento" disabled>
                     </div>
                 </div>
 
@@ -61,19 +61,19 @@
                     <div class="form-group col-sm-5">
                         <label class="form-control-label" for="bairro">Bairro</label>
                         <input type="text" class="form-control" name="bairro" id="bairro"
-                            formControlName="bairro">
+                            [(ngModel)]="cliente.cliente.bairro" disabled>
                     </div>
 
                     <div class="form-group col-sm-5">
                         <label class="form-control-label" for="cidade">Cidade</label>
                         <input type="text" class="form-control" name="cidade" id="cidade"
-                            formControlName="cidade">
+                            [(ngModel)]="cliente.cliente.cidade" disabled>
                     </div>
 
                     <div class="form-group col-sm-2">
                         <label class="form-control-label" for="uf">UF</label>
-                        <select class="custom-select" name="uf" id="uf" formControlName="uf">
-                            <option formControlName="uf">{{ uf }}</option>
+                        <select class="custom-select" name="uf" id="uf" [(ngModel)]="cliente.uf" disabled>
+                            <option [ngValue]="cliente.uf">{{ cliente.cliente?.uf }}</option>
                         </select>
                     </div>
                 </div>

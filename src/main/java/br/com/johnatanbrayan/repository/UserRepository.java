@@ -1,5 +1,6 @@
 package br.com.johnatanbrayan.repository;
 
+import br.com.johnatanbrayan.domain.Authority;
 import br.com.johnatanbrayan.domain.User;
 
 import org.springframework.cache.annotation.Cacheable;
@@ -42,4 +43,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findOneWithAuthoritiesByEmailIgnoreCase(String email);
 
     Page<User> findAllByLoginNot(Pageable pageable, String login);
+
+    Page<User> findAllByAuthorities(Pageable pageable, Authority authority);
+
+    Page<User> findAllByAuthoritiesAndFirstNameContaining(Pageable pageable, Authority authority, String firstName);
 }

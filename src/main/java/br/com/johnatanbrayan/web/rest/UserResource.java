@@ -161,6 +161,23 @@ public class UserResource {
     }
 
     /**
+     * {@code GET /users/findByRole} : get all users by role.
+     *
+     * @param pageable  the pagination information.
+     * @param firstName the firstName of user information to query
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body
+     *         all users.
+     */
+    @GetMapping("/users/findByRole/{role}")
+    public ResponseEntity<List<UserDTO>> getAllUsersByRole(@PathVariable String role, Pageable pageable,
+            @RequestParam(required = false) String firstName) {
+        final Page<UserDTO> page = userService.getAllUsersByRoleAndFirstName(pageable, role, firstName);
+        HttpHeaders headers = PaginationUtil
+                .generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    /**
      * Gets a list of all roles.
      * @return a string list of all roles.
      */

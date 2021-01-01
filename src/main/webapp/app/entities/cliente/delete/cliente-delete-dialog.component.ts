@@ -1,5 +1,5 @@
-import { IUser } from './../../../core/user/user.model';
-import { UserService } from '../../../core/user/user.service';
+import { UserService } from './../../../core/user/user.service';
+import { IUser } from 'app/core/user/user.model';
 import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';

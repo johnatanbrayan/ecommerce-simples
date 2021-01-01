@@ -1,17 +1,13 @@
-<div>
-    <h2 id="page-heading">
+<div class="card shadow-lg p-4">
+    <h2 class="mb-4" id="page-heading">
         <span jhiTranslate="ecommercesimplesApp.cliente.home.title">Clientes</span>
-
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-cliente" [routerLink]="['/cliente/new']">
+        <button id="jh-create-entity" class="btn btn-primary redondo float-right jh-create-entity create-cliente"
+            [routerLink]="['/cliente/new']">
             <fa-icon icon="plus"></fa-icon>
-            <span  jhiTranslate="ecommercesimplesApp.cliente.home.createLabel">
-            Create a new Cliente
-            </span>
         </button>
     </h2>
 
     <jhi-alert-error></jhi-alert-error>
-
     <jhi-alert></jhi-alert>
 
     <div class="alert alert-warning" id="no-result" *ngIf="clientes?.length === 0">
@@ -22,55 +18,27 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="dataNascimento"><span jhiTranslate="ecommercesimplesApp.cliente.dataNascimento">Data Nascimento</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="cpf"><span jhiTranslate="ecommercesimplesApp.cliente.cpf">Cpf</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="fone"><span jhiTranslate="ecommercesimplesApp.cliente.fone">Fone</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="celular"><span jhiTranslate="ecommercesimplesApp.cliente.celular">Celular</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="logradouro"><span jhiTranslate="ecommercesimplesApp.cliente.logradouro">Logradouro</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="numero"><span jhiTranslate="ecommercesimplesApp.cliente.numero">Numero</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="complemento"><span jhiTranslate="ecommercesimplesApp.cliente.complemento">Complemento</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="bairro"><span jhiTranslate="ecommercesimplesApp.cliente.bairro">Bairro</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="cidade"><span jhiTranslate="ecommercesimplesApp.cliente.cidade">Cidade</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="cep"><span jhiTranslate="ecommercesimplesApp.cliente.cep">Cep</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="uf"><span jhiTranslate="ecommercesimplesApp.cliente.uf">Uf</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col" jhiSortBy="nome"><span jhiTranslate="ecommercesimplesApp.cliente.nome">Nome</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let cliente of clientes ;trackBy: trackId">
-                    <td><a [routerLink]="['/cliente', cliente.id, 'view']">{{ cliente.id }}</a></td>
-                    <td>{{ cliente.dataNascimento | date:'mediumDate' }}</td>
-                    <td>{{ cliente.cpf }}</td>
-                    <td>{{ cliente.fone }}</td>
-                    <td>{{ cliente.celular }}</td>
-                    <td>{{ cliente.logradouro }}</td>
-                    <td>{{ cliente.numero }}</td>
-                    <td>{{ cliente.complemento }}</td>
-                    <td>{{ cliente.bairro }}</td>
-                    <td>{{ cliente.cidade }}</td>
-                    <td>{{ cliente.cep }}</td>
-                    <td>{{ cliente.uf }}</td>
+                <tr *ngFor="let cliente of clientes ;trackBy: trackId">                    
+                    <td>{{ cliente.firstName }}</td>
                     <td class="text-right">
-                        <div class="btn-group">
-                            <button type="submit"
-                                    [routerLink]="['/cliente', cliente.id, 'view']"
-                                    class="btn btn-info btn-sm">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit" [routerLink]="['/cliente', cliente.id, 'view']"
+                                class="btn btn-info btn-sm"  title="Visualizar">
                                 <fa-icon icon="eye"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                             </button>
-
-                            <button type="submit"
-                                    [routerLink]="['/cliente', cliente.id, 'edit']"
-                                    class="btn btn-primary btn-sm">
+                            <button type="submit" [routerLink]="['/cliente', cliente.id, 'edit']"
+                                class="btn btn-primary btn-sm"  title="Editar">
                                 <fa-icon icon="pencil-alt"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                             </button>
-
-                            <button type="submit" (click)="delete(cliente)"
-                                    class="btn btn-danger btn-sm">
-                                <fa-icon icon="times"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            <button type="submit" (click)="delete(cliente)" class="btn btn-danger btn-sm"  title="Excluir">
+                                <fa-icon icon="trash-alt"></fa-icon>
                             </button>
                         </div>
                     </td>
@@ -85,7 +53,9 @@
         </div>
 
         <div class="row justify-content-center">
-            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage"
+                [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)">
+            </ngb-pagination>
         </div>
     </div>
 </div>

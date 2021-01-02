@@ -9,7 +9,7 @@
         </span>
     </div>
 
-    <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm" autocomplete="off">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm" autocomplete="off">
         <div class="card-body">
             <jhi-alert-error></jhi-alert-error>
 
@@ -20,20 +20,129 @@
                 
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-control-label" for="field_nome">Nome</label>
-                                <input type="text" class="form-control" name="nome" id="field_nome" #nomeInput="ngModel"
-                                    [(ngModel)]="cliente.nome" maxlength="150" required />
+                        <div class="form-group col-md-6">
+                            <!-- nome -->
+                            <label class="form-control-label" for="firstName"
+                                jhiTranslate="ecommercesimplesApp.userManagement.firstName">FirstName</label>
+                            <input type="text" class="form-control" id="firstName" name="firstName"
+                                placeholder="{{ 'global.form.fistname.placeholder' | translate }}" formControlName="firstName"
+                                required>
+                            <div
+                                *ngIf="editForm.get('firstName')!.invalid && (editForm.get('firstName')!.dirty || editForm.get('firstName')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('firstName')?.errors?.required"
+                                    jhiTranslate="register.messages.validate.login.required">
+                                    Your username is required.
+                                </small>
+          
+                                <small class="form-text text-danger" *ngIf="editForm.get('firstName')?.errors?.minlength"
+                                    jhiTranslate="register.messages.validate.login.minlength">
+                                    Your username is required to be at least 1 character.
+                                </small>
+          
+                                <small class="form-text text-danger" *ngIf="editForm.get('firstName')?.errors?.maxlength"
+                                    jhiTranslate="register.messages.validate.login.maxlength">
+                                    Your username cannot be longer than 50 characters.
+                                </small>
+                            </div>
+                        </div>
+          
+                        <!-- CPF -->
+                        <div class="form-group col-md-3">
+                            <label class="form-control-label" name="cpf" jhiTranslate="ecommercesimplesApp.cliente.cpf">CPF</label>
+                            <input type="text" class="form-control" name="cpf" id="cpf" for="cpf" [textMask]="maskCpf"
+                                formControlName="cpf" required>
+                            <div
+                                *ngIf="editForm.get('cpf')!.invalid && (editForm.get('cpf')!.dirty || editForm.get('cpf')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('cpf')?.errors?.required"
+                                    jhiTranslate="entity.validation.required">
+                                    This field is required.
+                                </small>
+                                <small class="form-text text-danger" *ngIf="editForm.get('cpf')?.dirty"
+                                    jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern: 'CPF' }">
+                                    This field should follow pattern for "CPF".
+                                </small>
+                            </div>
+                        </div>
 
-                                <div *ngIf="nomeInput.invalid && (nomeInput.dirty || nomeInput.touched)">
-                                    <small class="form-text text-danger" *ngIf="nomeInput.errors?.required">
-                                        Esse campo é obrigatório.
-                                    </small>
-                                    <small class="form-text text-danger" *ngIf="nomeInput.errors?.maxlength">
-                                        Esse campo não pode ter mais de 150 caracteres.
-                                    </small>
-                                </div>
+                        <div class="form-group col-md-3">
+                            <label class="form-control-label" jhiTranslate="ecommercesimplesApp.cliente.dataDeNascimento"
+                                for="field_dataNascimento">Date of birth</label>
+                            <input id="field_dataNascimento" type="text" placeholder="dd/mm/yyyy" class="form-control"
+                                name="field_dataNascimento" #db="bsDatepicker" bsDatepicker (keyup)="db.toggle()"
+                                [bsConfig]="{ containerClass: 'theme-red', adaptivePosition: true, dateInputFormat: 'DD/MM/YYYY'}"
+                                onkeydown="return false" (onShown)="onOpenCalendar($event)" formControlName="dataNascimento"
+                                required />
+          
+                            <div
+                                *ngIf="editForm.get('dataNascimento')!.invalid && (editForm.get('dataNascimento')!.dirty || editForm.get('dataNascimento')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('dataNascimento')?.errors?.required"
+                                    jhiTranslate="entity.validation.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="form-control-label" for="email"
+                                jhiTranslate="ecommercesimplesApp.userManagement.email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="{{ 'global.form.email.placeholder' | translate }}" formControlName="email"
+                                minlength="5" maxlength="100" required>
+          
+                            <div
+                                *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('email')?.errors?.required"
+                                    jhiTranslate="global.messages.validate.email.required">
+                                    Your email is required.
+                                </small>
+          
+                                <small class="form-text text-danger"
+                                    *ngIf="editForm.get('email')?.invalid && (editForm.get('email')?.dirty || editForm.get('email')?.touched)"
+                                    jhiTranslate="global.messages.validate.email.invalid">
+                                    Your email is invalid.
+                                </small>
+          
+                                <small class="form-text text-danger" *ngIf="editForm.get('email')?.errors?.minlength"
+                                    jhiTranslate="global.messages.validate.email.minlength">
+                                    Your email is required to be at least 5 characters.
+                                </small>
+          
+                                <small class="form-text text-danger" *ngIf="editForm.get('email')?.errors?.maxlength"
+                                    jhiTranslate="global.messages.validate.email.maxlength">
+                                    Your email cannot be longer than 100 characters.
+                                </small>
+                            </div>
+                        </div>
+          
+                        <div class="form-group col-md-3">
+                            <label class="form-control-label" jhiTranslate="ecommercesimplesApp.cliente.fone"
+                                for="field_fone">Phone</label>
+                            <input type="text" class="form-control" name="fone" id="field_fone" formControlName="fone"
+                                [textMask]="maskFone" />
+          
+                            <div
+                                *ngIf="editForm.get('fone')!.invalid && (editForm.get('fone')!.dirty || editForm.get('fone')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('fone')?.errors?.required"
+                                    jhiTranslate="entity.validation.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
+          
+                        <div class="form-group col-md-3">
+                            <label class="form-control-label" jhiTranslate="ecommercesimplesApp.cliente.celular"
+                                for="field_celular">Cell Phone</label>
+                            <input type="text" class="form-control" name="celular" id="field_celular" formControlName="celular"
+                                [textMask]="maskCelular" required />
+          
+                            <div
+                                *ngIf="editForm.get('celular')!.invalid && (editForm.get('celular')!.dirty || editForm.get('celular')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('celular')?.errors?.required"
+                                    jhiTranslate="entity.validation.required">
+                                    This field is required.
+                                </small>
                             </div>
                         </div>
                     </div>
@@ -50,14 +159,13 @@
                         <div class="form-group col-sm-3">
                             <label class="form-control-label" for="cep">CEP</label>
                             <input type="text" class="form-control" name="cep" id="cep" placeholder="72234-567"
-                                [(ngModel)]="cliente.cliente.cep" #clienteCepInput="ngModel" minlength="9" (blur)="buscarCep()"
-                                [textMask]="maskCEP" required />
+                                formControlName="cep" minlength="9" (blur)="buscarCep()" [textMask]="maskCEP" required />
 
-                            <div *ngIf="clienteCepInput.invalid && (clienteCepInput.dirty || clienteCepInput.touched)">
-                                <small class="form-text text-danger" *ngIf="clienteCepInput.errors?.pattern">
+                            <div *ngIf="editForm.get('cep')!.invalid && (editForm.get('cep')!.dirty || editForm.get('cep')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('cep')?.errors?.pattern">
                                     Preencha todos os números
                                 </small>
-                                <small class="form-text text-danger" *ngIf="clienteCepInput.errors?.required">
+                                <small class="form-text text-danger" *ngIf="editForm.get('cep')?.errors?.required">
                                     Esse campo é obrigatório.
                                 </small>
                             </div>
@@ -69,11 +177,10 @@
 
                         <div class="form-group col-sm-7">
                             <label class="form-control-label" for="logradouro">Logradouro</label>
-                            <input type="text" class="form-control" #logradouroInput="ngModel" name="logradouro"
-                                id="logradouro" [(ngModel)]="cliente.cliente.logradouro" maxlength="50" required>
+                            <input type="text" class="form-control" name="logradouro" id="logradouro" formControlName="logradouro" maxlength="50" required>
 
-                            <div *ngIf="logradouroInput.invalid && (logradouroInput.dirty || logradouroInput.touched)">
-                                <small class="form-text text-danger" *ngIf="logradouroInput.errors?.required">
+                            <div *ngIf="editForm.get('logradouro')!.invalid && (editForm.get('logradouro')!.dirty || editForm.get('logradouro')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('logradouro')?.errors?.required">
                                     Esse campo é obrigatório.
                                 </small>
                             </div>
@@ -81,14 +188,13 @@
 
                         <div class="form-group col-sm-2">
                             <label class="form-control-label" for="numero">Número</label>
-                            <input type="number" class="form-control" #numeroInput="ngModel" name="numero" id="numero"
-                                [(ngModel)]="cliente.cliente.numero" min="0" maxlength="6" required>
+                            <input type="number" class="form-control" name="numero" id="numero" formControlName="numero" min="0" maxlength="6" required>
 
-                            <div *ngIf="numeroInput.invalid && (numeroInput.dirty || numeroInput.touched)">
-                                <small class="form-text text-danger" *ngIf="numeroInput.errors?.maxlength">
+                            <div *ngIf="editForm.get('numero')!.invalid && (editForm.get('numero')!.dirty || editForm.get('numero')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('numero')?.errors?.maxlength">
                                     Esse campo não pode ter mais de 6 caracteres.
                                 </small>
-                                <small class="form-text text-danger" *ngIf="numeroInput.errors?.required">
+                                <small class="form-text text-danger" *ngIf="editForm.get('numero')?.errors?.required">
                                     Esse campo é obrigatório.
                                 </small>
                             </div>
@@ -97,13 +203,12 @@
 
                     <div class="row d-flex justify-content-center">
                         <div class="form-group col-sm-12">
-                            <label class="form-control-label" for="complemento">Complemento</label>
-                            <input type="text" class="form-control" #complementoInput="ngModel" name="complemento"
-                                id="complemento" [(ngModel)]="cliente.cliente.complemento" maxlength="100">
+                            <label class="form-control-label" for="bairro">Complemento</label>
+                            <input type="text" class="form-control" name="complemento" id="complemento" formControlName="complemento" maxlength="100">
 
                             <div
-                                *ngIf="complementoInput.invalid && (complementoInput.dirty || complementoInput.touched)">
-                                <small class="form-text text-danger" *ngIf="complementoInput.errors?.maxlength">
+                                *ngIf="editForm.get('complemento')!.invalid && (editForm.get('complemento')!.dirty || editForm.get('complemento')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('complemento')?.errors?.maxlength">
                                     Esse campo não pode ter mais de 100 caracteres.
                                 </small>
                             </div>
@@ -113,14 +218,14 @@
                     <div class="row">
                         <div class="form-group col-sm-5">
                             <label class="form-control-label" for="bairro">Bairro</label>
-                            <input type="text" class="form-control" #bairroInput="ngModel" name="bairro" id="bairro"
-                                [(ngModel)]="cliente.cliente.bairro" maxlength="100" required>
+                            <input type="text" class="form-control" name="bairro" id="bairro"
+                                formControlName="bairro" maxlength="100" required>
 
-                            <div *ngIf="bairroInput.invalid && (bairroInput.dirty || bairroInput.touched)">
-                                <small class="form-text text-danger" *ngIf="bairroInput.errors?.maxlength">
+                            <div *ngIf="editForm.get('bairro')!.invalid && (editForm.get('bairro')!.dirty || editForm.get('bairro')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('bairro')?.errors?.maxlength">
                                     Esse campo não pode ter mais de 100 caracteres.
                                 </small>
-                                <small class="form-text text-danger" *ngIf="bairroInput.errors?.required">
+                                <small class="form-text text-danger" *ngIf="editForm.get('bairro')?.errors?.required">
                                     Esse campo é obrigatório.
                                 </small>
                             </div>
@@ -128,14 +233,13 @@
 
                         <div class="form-group col-sm-5">
                             <label class="form-control-label" for="cidade">Cidade</label>
-                            <input type="text" class="form-control" #cidadeInput="ngModel" name="cidade" id="cidade"
-                                [(ngModel)]="cliente.cliente.cidade" maxlength="100" required>
+                            <input type="text" class="form-control" name="cidade" id="cidade" formControlName="cidade" maxlength="100" required>
 
-                            <div *ngIf="cidadeInput.invalid && (cidadeInput.dirty || cidadeInput.touched)">
-                                <small class="form-text text-danger" *ngIf="cidadeInput.errors?.maxlength">
+                            <div *ngIf="editForm.get('cidade')!.invalid && (editForm.get('cidade')!.dirty || editForm.get('cidade')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('cidade')?.errors?.maxlength">
                                     Esse campo não pode ter mais de 100 caracteres.
                                 </small>
-                                <small class="form-text text-danger" *ngIf="cidadeInput.errors?.required">
+                                <small class="form-text text-danger" *ngIf="editForm.get('cidade')?.errors?.required">
                                     Esse campo é obrigatório.
                                 </small>
                             </div>
@@ -143,13 +247,12 @@
 
                         <div class="form-group col-sm-2">
                             <label class="form-control-label" for="uf">UF</label>
-                            <select class="custom-select" name="uf" id="uf" [(ngModel)]="cliente.cliente.uf" #ufInput="ngModel"
-                                required>
-                                <option *ngFor="let item of ufs" [value]="item">{{item}}</option>
+                            <select class="custom-select" name="uf" id="uf" formControlName="uf" required>
+                                <option *ngFor="let item of ufs" [value]="item">{{ item }}</option>
                             </select>
 
-                            <div *ngIf="ufInput.invalid && (ufInput.dirty || ufInput.touched)">
-                                <small class="form-text text-danger" *ngIf="ufInput.errors?.required">
+                            <div *ngIf="editForm.get('uf')!.invalid && (editForm.get('uf')!.dirty || editForm.get('uf')!.touched)">
+                                <small class="form-text text-danger" *ngIf="editForm.get('uf')?.errors?.required">
                                     Esse campo é obrigatório.
                                 </small>
                             </div>
@@ -164,7 +267,7 @@
                 <fa-icon [icon]="'chevron-left'"></fa-icon>&nbsp;<span  jhiTranslate="entity.action.back">Voltar</span>
             </button>
 
-            <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving"
+            <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving"
                 class="btn btn-primary float-right">
                 <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Salvar</span>
             </button>

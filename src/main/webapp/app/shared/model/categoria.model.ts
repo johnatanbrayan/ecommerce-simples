@@ -1,4 +1,4 @@
-import { IProduto } from 'app/shared/model/produto.model';
+import { IProduto } from './produto.model';
 
 export interface ICategoria {
   id?: number;

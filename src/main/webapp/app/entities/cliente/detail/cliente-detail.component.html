@@ -1,88 +1,123 @@
-<!-- <div class="card shadow-lg">
+<div class="card card-theme">
     <div class="card-header">
-        <span class="modal-title">
-            <span>Visualizando Cliente</span>
+        <span class="modal-title" id="upadate">
+            <h4 class="pt-2">Visualizando Cliente</h4>
         </span>
     </div>
 
-    <div class="card-body">
-        <jhi-alert-error></jhi-alert-error>
-        <div class="card">
-            <div class="card-header">
-                Dados gerais
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label class="form-control-label" for="field_nome">Nome</label>
-                            <input type="text" class="form-control" name="nome" id="field_nome"
-                                [(ngModel)]="cliente.cliente.nome" disabled/>
+    <form name="editForm" role="form" novalidate [formGroup]="editForm" autocomplete="off">
+        <div class="card-body">
+            <jhi-alert-error></jhi-alert-error>
 
+            <div class="card">
+                <div class="card-header">
+                    Dados Gerais
+                </div>
+                
+                <div class="card-body">
+                    <div class="row">
+                        <!-- nome -->
+                        <div class="form-group col-md-6">
+                            <label class="form-control-label" for="firstName"
+                                jhiTranslate="userManagement.firstName">FirstName</label>
+                            <input type="text" class="form-control" id="firstName" name="firstName"
+                                formControlName="firstName" required>
+                        </div>
+            
+                        <!-- CPF -->
+                        <div class="form-group col-md-3">
+                            <label class="form-control-label" name="cpf" jhiTranslate="ecommercesimplesApp.cliente.cpf">CPF</label>
+                            <input type="text" class="form-control" name="cpf" id="cpf" for="cpf"
+                                formControlName="cpf" required>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label class="form-control-label" jhiTranslate="ecommercesimplesApp.cliente.dataNascimento"
+                                for="field_dataNascimento">Date of birth</label>
+                            <input id="field_dataNascimento" type="text" class="form-control"
+                                name="field_dataNascimento" #db="bsDatepicker" bsDatepicker formControlName="dataNascimento"
+                                required />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="form-control-label" for="email"
+                                jhiTranslate="userManagement.email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                formControlName="email" minlength="5" maxlength="100" required>
+                        </div>
+            
+                        <div class="form-group col-md-3">
+                            <label class="form-control-label" jhiTranslate="ecommercesimplesApp.cliente.fone"
+                                for="field_fone">Phone</label>
+                            <input type="text" class="form-control" name="fone" id="field_fone" formControlName="fone"/>
+                        </div>
+            
+                        <div class="form-group col-md-3">
+                            <label class="form-control-label" jhiTranslate="ecommercesimplesApp.cliente.celular"
+                                for="field_celular">Cell Phone</label>
+                            <input type="text" class="form-control" name="celular" id="field_celular" formControlName="celular" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br/>
+
+            <div class="card">
+                <div class="card-header">
+                    Endereço
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-sm-3">
+                            <label class="form-control-label" for="cep">CEP</label>
+                            <input type="text" class="form-control" name="cep" id="cep" formControlName="cep" required />
+                        </div>
+
+                        <div class="form-group col-sm-7">
+                            <label class="form-control-label" for="logradouro">Logradouro</label>
+                            <input type="text" class="form-control" name="logradouro" id="logradouro" formControlName="logradouro" required>
+                        </div>
+
+                        <div class="form-group col-sm-2">
+                            <label class="form-control-label" for="numero">Número</label>
+                            <input type="number" class="form-control" name="numero" id="numero" formControlName="numero" required>
+                        </div>
+                    </div>
+
+                    <div class="row d-flex justify-content-center">
+                        <div class="form-group col-sm-12">
+                            <label class="form-control-label" for="bairro">Complemento</label>
+                            <input type="text" class="form-control" name="complemento" id="complemento" formControlName="complemento">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-5">
+                            <label class="form-control-label" for="bairro">Bairro</label>
+                            <input type="text" class="form-control" name="bairro" id="bairro"
+                                formControlName="bairro" required>
+                        </div>
+
+                        <div class="form-group col-sm-5">
+                            <label class="form-control-label" for="cidade">Cidade</label>
+                            <input type="text" class="form-control" name="cidade" id="cidade" formControlName="cidade" required>
+                        </div>
+
+                        <div class="form-group col-sm-2">
+                            <label class="form-control-label" for="uf">UF</label>
+                            <input class="form-control" name="uf" id="uf" formControlName="uf" required />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <br />
 
-        <div class="card">
-            <div class="card-header">
-                Endereço
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="form-group col-sm-3">
-                        <label class="form-control-label" for="cep">CEP</label>
-                        <input type="text" class="form-control" name="cep" id="cep" [(ngModel)]="cliente.cliente.cep" disabled/>
-                    </div>
-
-                    <div class="form-group col-sm-7">
-                        <label class="form-control-label" for="logradouro">Logradouro</label>
-                        <input type="text" class="form-control" name="logradouro" id="logradouro" 
-                            [(ngModel)]="cliente.cliente.logradouro" disabled>
-                    </div>
-
-                    <div class="form-group col-sm-2">
-                        <label class="form-control-label" for="numero">Número</label>
-                        <input type="number" class="form-control" name="numero" id="numero"
-                            [(ngModel)]="cliente.cliente.numero" disabled>
-                    </div>
-                </div>
-
-                <div class="row d-flex justify-content-center">
-                    <div class="form-group col-sm-12">
-                        <label class="form-control-label" for="complemento">Complemento</label>
-                        <input type="text" class="form-control" name="complemento" id="complemento" [(ngModel)]="cliente.cliente.complemento" disabled>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-sm-5">
-                        <label class="form-control-label" for="bairro">Bairro</label>
-                        <input type="text" class="form-control" name="bairro" id="bairro"
-                            [(ngModel)]="cliente.cliente.bairro" disabled>
-                    </div>
-
-                    <div class="form-group col-sm-5">
-                        <label class="form-control-label" for="cidade">Cidade</label>
-                        <input type="text" class="form-control" name="cidade" id="cidade"
-                            [(ngModel)]="cliente.cliente.cidade" disabled>
-                    </div>
-
-                    <div class="form-group col-sm-2">
-                        <label class="form-control-label" for="uf">UF</label>
-                        <select class="custom-select" name="uf" id="uf" [(ngModel)]="cliente.uf" disabled>
-                            <option [ngValue]="cliente.uf">{{ cliente.cliente?.uf }}</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
+        <div class="card-footer">
+            <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                <fa-icon [icon]="'chevron-left'"></fa-icon>&nbsp;<span  jhiTranslate="entity.action.back">Voltar</span>
+            </button>
         </div>
-    </div>
-    <div class="card-footer">
-        <button type="button" id="cancel-save" class="btn btn-secondary float-left" (click)="previousState()">
-            <fa-icon [icon]="'chevron-left'"></fa-icon>&nbsp;<span  jhiTranslate="entity.action.back">Voltar</span>
-        </button>
-    </div><br />
-</div> -->
+    </form>
+</div>

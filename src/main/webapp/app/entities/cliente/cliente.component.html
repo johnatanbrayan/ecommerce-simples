@@ -1,4 +1,4 @@
-<div class="card shadow-lg p-4">
+<div>
     <h2 class="mb-4" id="page-heading">
         <span jhiTranslate="ecommercesimplesApp.cliente.home.title">Clientes</span>
         <button id="jh-create-entity" class="btn btn-primary redondo float-right jh-create-entity create-cliente"
@@ -18,22 +18,41 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-                    <th scope="col" jhiSortBy="nome"><span jhiTranslate="userManagement.firstName">Nome</span>
+                    <th scope="col" jhiSortBy="firstName"><span jhiTranslate="userManagement.firstName">Nome</span>
                         <fa-icon icon="sort"></fa-icon>
                     </th>
+                    <th scope="col" jhiSortBy="email"><span jhiTranslate="userManagement.email">Email</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="cpf"><span jhiTranslate="ecommercesimplesApp.cliente.cpf">CPF</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="dataNascimento"><span jhiTranslate="ecommercesimplesApp.cliente.dataNascimento">Data Nascimento</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col"  jhiSortBy="status"><span jhiTranslate="ecommercesimplesApp.cliente.status">Status</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let cliente of clientes ;trackBy: trackId">                    
                     <td>{{ cliente.firstName }}</td>
+                    <td>{{ cliente.email }}</td>
+                    <td>{{ cliente.cliente?.cpf }}</td>
+                    <td>{{ cliente.cliente?.dataNascimento | date: 'dd/MM/yy' }}</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm btn-circle" (click)="setActive(cliente, true)" *ngIf="!cliente.activated"><fa-icon icon="minus-circle"></fa-icon></button>
+                        <button class="btn btn-success btn-sm btn-circle" (click)="setActive(cliente, false)" *ngIf="cliente.activated"
+                                [disabled]="!currentAccount || currentAccount.login === cliente.login"><fa-icon icon="check-circle"></fa-icon>
+                        </button>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
-                            <button type="submit" [routerLink]="['/cliente', cliente.id, 'view']"
+                            <button type="submit" [routerLink]="['/cliente', cliente.login, 'view']"
                                 class="btn btn-info btn-sm"  title="Visualizar">
                                 <fa-icon icon="eye"></fa-icon>
                             </button>
-                            <button type="submit" [routerLink]="['/cliente', cliente.id, 'edit']"
+                            <button type="submit" [routerLink]="['/cliente', cliente.login, 'edit']"
                                 class="btn btn-primary btn-sm"  title="Editar">
                                 <fa-icon icon="pencil-alt"></fa-icon>
                             </button>

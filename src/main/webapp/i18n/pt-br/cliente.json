@@ -26,7 +26,8 @@
       "bairro": "Bairro",
       "cidade": "Cidade",
       "cep": "Cep",
-      "uf": "Uf"
+      "uf": "Uf",
+      "status": "Status"
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Moment } from 'moment';
+import { Moment } from 'moment/moment';
 
 export interface ICliente {
   dataNascimento?: Moment;
@@ -62,6 +62,6 @@ export class User implements IUser {
     public lastModifiedBy?: string,
     public lastModifiedDate?: Date,
     public password?: string,
-    public cliente?: ICliente,
+    public cliente?: ICliente
   ) {}
 }

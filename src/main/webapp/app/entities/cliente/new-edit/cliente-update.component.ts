@@ -71,8 +71,10 @@ export class ClienteUpdateComponent implements OnInit {
     this.isSaving = false;
     this.validador = false;
     this.activatedRoute.data.subscribe(({ cliente }) => {
-      this.cliente = cliente;
-      this.updateForm(cliente);
+      if (cliente) {
+        this.cliente = cliente;
+        this.updateForm(cliente);
+      }
     });
   }
 
@@ -137,8 +139,7 @@ export class ClienteUpdateComponent implements OnInit {
     cliente.email = this.editForm.get(['email'])!.value;
     cliente.langKey = this.languageService.getCurrentLanguage();
     cliente.authorities = ['ROLE_USER'];
-    cliente.login = cliente.email;
-
+    cliente.login = cpf.replace(/\D/g, '');
     cliente.cliente = new Cliente(moment(dataNascimento), cpf, fone, celular, logradouro, numero, complemento, bairro, cidade, cep, uf);
   }
 

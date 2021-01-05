@@ -1,13 +1,11 @@
+import { ITEMS_PER_PAGE } from './../../shared/constants/pagination.constants';
+import { ICategoria } from './../../shared/model/categoria.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, ParamMap, Router, Data } from '@angular/router';
 import { Subscription, combineLatest } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
-import { ICategoria } from 'app/shared/model/categoria.model';
-
-import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { CategoriaService } from './categoria.service';
 import { CategoriaDeleteDialogComponent } from './categoria-delete-dialog.component';
 
@@ -72,6 +70,10 @@ export class CategoriaComponent implements OnInit, OnDestroy {
     if (this.eventSubscriber) {
       this.eventManager.destroy(this.eventSubscriber);
     }
+  }
+
+  setActive(cliente: ICategoria, isActivated: boolean): void {
+    this.categoriaService.update({ ...cliente, status: isActivated }).subscribe(() => this.loadPage());
   }
 
   trackId(index: number, item: ICategoria): number {

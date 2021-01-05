@@ -1,11 +1,10 @@
+import { ICategoria, Categoria } from './../../shared/model/categoria.model';
 import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-
-import { ICategoria, Categoria } from 'app/shared/model/categoria.model';
 import { CategoriaService } from './categoria.service';
 
 @Component({
@@ -14,6 +13,7 @@ import { CategoriaService } from './categoria.service';
 })
 export class CategoriaUpdateComponent implements OnInit {
   isSaving = false;
+  categoria!: ICategoria;
 
   editForm = this.fb.group({
     id: [],
@@ -25,6 +25,7 @@ export class CategoriaUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ categoria }) => {
+      this.categoria = categoria;
       this.updateForm(categoria);
     });
   }
@@ -43,20 +44,20 @@ export class CategoriaUpdateComponent implements OnInit {
 
   save(): void {
     this.isSaving = true;
-    const categoria = this.createFromForm();
-    if (categoria.id !== undefined) {
-      this.subscribeToSaveResponse(this.categoriaService.update(categoria));
+    this.categoria = this.createFromForm();
+    if (this.categoria.id !== undefined) {
+      this.subscribeToSaveResponse(this.categoriaService.update(this.categoria));
     } else {
-      this.subscribeToSaveResponse(this.categoriaService.create(categoria));
+      this.subscribeToSaveResponse(this.categoriaService.create(this.categoria));
     }
   }
 
   private createFromForm(): ICategoria {
     return {
       ...new Categoria(),
-      id: this.editForm.get(['id'])!.value,
+      // id: this.editForm.get(['id'])!.value,
       nome: this.editForm.get(['nome'])!.value,
-      status: this.editForm.get(['status'])!.value,
+      status: true,
     };
   }
 

@@ -3,8 +3,10 @@
     "categoria": {
       "home": {
         "title": "Categorias",
-        "createLabel": "Criar novo Categoria",
+        "createLabel": "Criar nova Categoria",
+        "createLabel2": "Criando Categoria",
         "createOrEditLabel": "Criar ou editar Categoria",
+        "editLabel": "Editando Categoria",
         "notFound": "Nenhum Categoria encontrado"
       },
       "created": "Um novo Categoria foi criado com o identificador {{ param }}",

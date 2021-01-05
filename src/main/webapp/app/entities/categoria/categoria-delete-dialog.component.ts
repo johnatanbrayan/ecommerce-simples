@@ -1,8 +1,7 @@
+import { ICategoria } from './../../shared/model/categoria.model';
 import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
-
-import { ICategoria } from 'app/shared/model/categoria.model';
 import { CategoriaService } from './categoria.service';
 
 @Component({

@@ -1,34 +1,19 @@
-<div class="row justify-content-center">
-    <div class="col-8">
-        <div *ngIf="categoria">
-            <h2><span jhiTranslate="ecommercesimplesApp.categoria.detail.title">Categoria</span> {{ categoria.id }}</h2>
+<div class="card card-theme">
+    <div class="card-header">
+        <h5 class="pt-2">Visualizando Categoria</h5>
+    </div>
 
-            <hr>
-
-            <jhi-alert-error></jhi-alert-error>
-
-            <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="ecommercesimplesApp.categoria.nome">Nome</span></dt>
-                <dd>
-                    <span>{{ categoria.nome }}</span>
-                </dd>
-                <dt><span jhiTranslate="ecommercesimplesApp.categoria.status">Status</span></dt>
-                <dd>
-                    <span>{{ categoria.status }}</span>
-                </dd>
-            </dl>
-
-            <button type="submit"
-                    (click)="previousState()"
-                    class="btn btn-info">
-                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
-            </button>
-
-            <button type="button"
-                    [routerLink]="['/categoria', categoria.id, 'edit']"
-                    class="btn btn-primary">
-                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
-            </button>
+    <div class="card-body">
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="ecommercesimplesApp.categoria.nome" for="field_nome">Nome</label>
+            <input type="text" class="form-control" name="nome" id="field_nome"
+                    [(ngModel)]="categoria.nome" disabled/>
         </div>
+    </div>
+
+    <div class="card-footer">
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+            <fa-icon icon="chevron-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
     </div>
 </div>

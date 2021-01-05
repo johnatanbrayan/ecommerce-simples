@@ -1,7 +1,6 @@
+import { ICategoria } from './../../shared/model/categoria.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
-import { ICategoria } from 'app/shared/model/categoria.model';
 
 @Component({
   selector: 'jhi-categoria-detail',

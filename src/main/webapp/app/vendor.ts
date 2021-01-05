@@ -81,6 +81,7 @@ import {
   faBoxOpen,
   faMoneyBillWave,
   faCubes,
+  faCheckCircle,
 } from '@fortawesome/free-solid-svg-icons';
 
 // Adds the SVG icon to the library so you can use it in your page
@@ -161,5 +162,6 @@ library.add(
   faPrint,
   faBoxOpen,
   faMoneyBillWave,
-  faCubes
+  faCubes,
+  faCheckCircle
 );

@@ -1,7 +1,7 @@
+import { EcommercesimplesSharedModule } from './../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { EcommercesimplesSharedModule } from 'app/shared/shared.module';
 import { CategoriaComponent } from './categoria.component';
 import { CategoriaDetailComponent } from './categoria-detail.component';
 import { CategoriaUpdateComponent } from './categoria-update.component';

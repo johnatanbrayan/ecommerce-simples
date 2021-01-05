@@ -4,6 +4,8 @@
       "home": {
         "title": "Pagamentos",
         "createLabel": "Criar novo Pagamento",
+        "createLabel2": "Criando Pagamento",
+        "editLabel": "Editando Pagamento",
         "createOrEditLabel": "Criar ou editar Pagamento",
         "notFound": "Nenhum Pagamento encontrado"
       },

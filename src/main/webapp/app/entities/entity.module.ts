@@ -12,6 +12,10 @@ import { RouterModule } from '@angular/router';
         path: 'categoria',
         loadChildren: () => import('./categoria/categoria.module').then(m => m.EcommercesimplesCategoriaModule),
       },
+      {
+        path: 'pagamento',
+        loadChildren: () => import('./pagamento/pagamento.module').then(m => m.EcommercesimplesPagamentoModule),
+      },
     ]),
   ],
 })

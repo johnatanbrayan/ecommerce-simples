@@ -1,12 +1,12 @@
+import { UserRouteAccessService } from './../../core/auth/user-route-access-service';
+import { Authority } from './../../shared/constants/authority.constants';
+import { IPagamento, Pagamento } from './../../shared/model/pagamento.model';
 import { Injectable } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { Resolve, ActivatedRouteSnapshot, Routes, Router } from '@angular/router';
 import { Observable, of, EMPTY } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
-import { Authority } from 'app/shared/constants/authority.constants';
-import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
-import { IPagamento, Pagamento } from 'app/shared/model/pagamento.model';
 import { PagamentoService } from './pagamento.service';
 import { PagamentoComponent } from './pagamento.component';
 import { PagamentoDetailComponent } from './pagamento-detail.component';
@@ -39,7 +39,7 @@ export const pagamentoRoute: Routes = [
     path: '',
     component: PagamentoComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       defaultSort: 'id,asc',
       pageTitle: 'ecommercesimplesApp.pagamento.home.title',
     },
@@ -52,7 +52,7 @@ export const pagamentoRoute: Routes = [
       pagamento: PagamentoResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       pageTitle: 'ecommercesimplesApp.pagamento.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -64,7 +64,7 @@ export const pagamentoRoute: Routes = [
       pagamento: PagamentoResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       pageTitle: 'ecommercesimplesApp.pagamento.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -76,7 +76,7 @@ export const pagamentoRoute: Routes = [
       pagamento: PagamentoResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       pageTitle: 'ecommercesimplesApp.pagamento.home.title',
     },
     canActivate: [UserRouteAccessService],

@@ -1,11 +1,10 @@
+import { IPagamento, Pagamento } from './../../shared/model/pagamento.model';
 import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-
-import { IPagamento, Pagamento } from 'app/shared/model/pagamento.model';
 import { PagamentoService } from './pagamento.service';
 
 @Component({
@@ -13,6 +12,7 @@ import { PagamentoService } from './pagamento.service';
   templateUrl: './pagamento-update.component.html',
 })
 export class PagamentoUpdateComponent implements OnInit {
+  pagamento!: IPagamento;
   isSaving = false;
 
   editForm = this.fb.group({
@@ -24,6 +24,7 @@ export class PagamentoUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ pagamento }) => {
+      this.pagamento = pagamento;
       this.updateForm(pagamento);
     });
   }
@@ -41,18 +42,17 @@ export class PagamentoUpdateComponent implements OnInit {
 
   save(): void {
     this.isSaving = true;
-    const pagamento = this.createFromForm();
-    if (pagamento.id !== undefined) {
-      this.subscribeToSaveResponse(this.pagamentoService.update(pagamento));
+    this.pagamento = this.createFromForm();
+    if (this.pagamento.id !== undefined) {
+      this.subscribeToSaveResponse(this.pagamentoService.update(this.pagamento));
     } else {
-      this.subscribeToSaveResponse(this.pagamentoService.create(pagamento));
+      this.subscribeToSaveResponse(this.pagamentoService.create(this.pagamento));
     }
   }
 
   private createFromForm(): IPagamento {
     return {
       ...new Pagamento(),
-      id: this.editForm.get(['id'])!.value,
       estadoPagamento: this.editForm.get(['estadoPagamento'])!.value,
     };
   }

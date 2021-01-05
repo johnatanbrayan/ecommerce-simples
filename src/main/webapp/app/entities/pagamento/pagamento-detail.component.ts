@@ -1,7 +1,6 @@
+import { IPagamento } from './../../shared/model/pagamento.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
-import { IPagamento } from 'app/shared/model/pagamento.model';
 
 @Component({
   selector: 'jhi-pagamento-detail',

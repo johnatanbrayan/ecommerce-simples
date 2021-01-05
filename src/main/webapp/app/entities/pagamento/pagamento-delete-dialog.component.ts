@@ -1,8 +1,8 @@
+import { IPagamento } from './../../shared/model/pagamento.model';
 import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { IPagamento } from 'app/shared/model/pagamento.model';
 import { PagamentoService } from './pagamento.service';
 
 @Component({

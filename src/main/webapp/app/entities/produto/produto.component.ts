@@ -1,3 +1,5 @@
+import { ITEMS_PER_PAGE } from './../../shared/constants/pagination.constants';
+import { IProduto } from './../../shared/model/produto.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, ParamMap, Router, Data } from '@angular/router';
@@ -5,9 +7,6 @@ import { Subscription, combineLatest } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { IProduto } from 'app/shared/model/produto.model';
-
-import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { ProdutoService } from './produto.service';
 import { ProdutoDeleteDialogComponent } from './produto-delete-dialog.component';
 
@@ -77,6 +76,10 @@ export class ProdutoComponent implements OnInit, OnDestroy {
   trackId(index: number, item: IProduto): number {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
     return item.id!;
+  }
+
+  setActive(produto: IProduto, isActivated: boolean): void {
+    this.produtoService.update({ ...produto, status: isActivated }).subscribe(() => this.loadPage());
   }
 
   registerChangeInProdutos(): void {

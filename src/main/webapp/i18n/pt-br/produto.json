@@ -4,6 +4,8 @@
       "home": {
         "title": "Produtos",
         "createLabel": "Criar novo Produto",
+        "createLabel2": "Criando Produto",
+        "editLabel": "Editando Produto",
         "createOrEditLabel": "Criar ou editar Produto",
         "notFound": "Nenhum Produto encontrado"
       },

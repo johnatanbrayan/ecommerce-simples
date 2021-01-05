@@ -72,8 +72,8 @@ export class CategoriaComponent implements OnInit, OnDestroy {
     }
   }
 
-  setActive(cliente: ICategoria, isActivated: boolean): void {
-    this.categoriaService.update({ ...cliente, status: isActivated }).subscribe(() => this.loadPage());
+  setActive(categoria: ICategoria, isActivated: boolean): void {
+    this.categoriaService.update({ ...categoria, status: isActivated }).subscribe(() => this.loadPage());
   }
 
   trackId(index: number, item: ICategoria): number {

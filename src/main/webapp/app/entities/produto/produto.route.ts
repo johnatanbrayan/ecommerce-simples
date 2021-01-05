@@ -1,12 +1,12 @@
+import { UserRouteAccessService } from './../../core/auth/user-route-access-service';
+import { Authority } from './../../shared/constants/authority.constants';
+import { IProduto, Produto } from './../../shared/model/produto.model';
 import { Injectable } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { Resolve, ActivatedRouteSnapshot, Routes, Router } from '@angular/router';
 import { Observable, of, EMPTY } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
-import { Authority } from 'app/shared/constants/authority.constants';
-import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
-import { IProduto, Produto } from 'app/shared/model/produto.model';
 import { ProdutoService } from './produto.service';
 import { ProdutoComponent } from './produto.component';
 import { ProdutoDetailComponent } from './produto-detail.component';
@@ -39,7 +39,7 @@ export const produtoRoute: Routes = [
     path: '',
     component: ProdutoComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       defaultSort: 'id,asc',
       pageTitle: 'ecommercesimplesApp.produto.home.title',
     },
@@ -52,7 +52,7 @@ export const produtoRoute: Routes = [
       produto: ProdutoResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       pageTitle: 'ecommercesimplesApp.produto.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -64,7 +64,7 @@ export const produtoRoute: Routes = [
       produto: ProdutoResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       pageTitle: 'ecommercesimplesApp.produto.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -76,7 +76,7 @@ export const produtoRoute: Routes = [
       produto: ProdutoResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       pageTitle: 'ecommercesimplesApp.produto.home.title',
     },
     canActivate: [UserRouteAccessService],

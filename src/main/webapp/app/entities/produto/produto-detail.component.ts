@@ -1,7 +1,6 @@
+import { IProduto } from './../../shared/model/produto.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
-import { IProduto } from 'app/shared/model/produto.model';
 
 @Component({
   selector: 'jhi-produto-detail',

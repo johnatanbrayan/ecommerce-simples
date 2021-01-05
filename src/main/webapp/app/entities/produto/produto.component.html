@@ -4,14 +4,10 @@
 
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-produto" [routerLink]="['/produto/new']">
             <fa-icon icon="plus"></fa-icon>
-            <span  jhiTranslate="ecommercesimplesApp.produto.home.createLabel">
-            Create a new Produto
-            </span>
         </button>
     </h2>
 
     <jhi-alert-error></jhi-alert-error>
-
     <jhi-alert></jhi-alert>
 
     <div class="alert alert-warning" id="no-result" *ngIf="produtos?.length === 0">
@@ -22,7 +18,6 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="nome"><span jhiTranslate="ecommercesimplesApp.produto.nome">Nome</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="preco"><span jhiTranslate="ecommercesimplesApp.produto.preco">Preco</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="status"><span jhiTranslate="ecommercesimplesApp.produto.status">Status</span> <fa-icon icon="sort"></fa-icon></th>
@@ -31,39 +26,31 @@
             </thead>
             <tbody>
                 <tr *ngFor="let produto of produtos ;trackBy: trackId">
-                    <td><a [routerLink]="['/produto', produto.id, 'view']">{{ produto.id }}</a></td>
                     <td>{{ produto.nome }}</td>
-                    <td>{{ produto.preco }}</td>
-                    <td>{{ produto.status }}</td>
+                    <td>{{ produto.preco | currency: 'R$' }}</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm btn-circle" (click)="setActive(produto, true)" *ngIf="!produto.status"><fa-icon icon="minus-circle"></fa-icon></button>
+                        <button class="btn btn-success btn-sm btn-circle" (click)="setActive(produto, false)" *ngIf="produto.status">
+                            <fa-icon icon="check-circle"></fa-icon>
+                        </button>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"
                                     [routerLink]="['/produto', produto.id, 'view']"
                                     class="btn btn-info btn-sm">
                                 <fa-icon icon="eye"></fa-icon>
-<<<<<<< HEAD
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-=======
->>>>>>> dde7e4a070ea58734f3052cae1e4746287de6739
                             </button>
 
                             <button type="submit"
                                     [routerLink]="['/produto', produto.id, 'edit']"
                                     class="btn btn-primary btn-sm">
                                 <fa-icon icon="pencil-alt"></fa-icon>
-<<<<<<< HEAD
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-=======
->>>>>>> dde7e4a070ea58734f3052cae1e4746287de6739
                             </button>
 
                             <button type="submit" (click)="delete(produto)"
                                     class="btn btn-danger btn-sm">
-                                <fa-icon icon="times"></fa-icon>
-<<<<<<< HEAD
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-=======
->>>>>>> dde7e4a070ea58734f3052cae1e4746287de6739
+                                <fa-icon icon="trash-alt"></fa-icon>
                             </button>
                         </div>
                     </td>

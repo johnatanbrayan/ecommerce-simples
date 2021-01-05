@@ -1,3 +1,8 @@
+import { PedidoService } from './../pedido/pedido.service';
+import { CategoriaService } from './../categoria/categoria.service';
+import { IProduto, Produto } from './../../shared/model/produto.model';
+import { ICategoria } from './../../shared/model/categoria.model';
+import { IPedido } from './../../shared/model/pedido.model';
 import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -5,12 +10,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { IProduto, Produto } from 'app/shared/model/produto.model';
 import { ProdutoService } from './produto.service';
-import { ICategoria } from 'app/shared/model/categoria.model';
-import { CategoriaService } from 'app/entities/categoria/categoria.service';
-import { IPedido } from 'app/shared/model/pedido.model';
-import { PedidoService } from 'app/entities/pedido/pedido.service';
 
 type SelectableEntity = ICategoria | IPedido;
 
@@ -19,6 +19,7 @@ type SelectableEntity = ICategoria | IPedido;
   templateUrl: './produto-update.component.html',
 })
 export class ProdutoUpdateComponent implements OnInit {
+  produto!: IProduto;
   isSaving = false;
   categorias: ICategoria[] = [];
   pedidos: IPedido[] = [];
@@ -42,10 +43,10 @@ export class ProdutoUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ produto }) => {
+      this.produto = produto;
       this.updateForm(produto);
 
       this.categoriaService.query().subscribe((res: HttpResponse<ICategoria[]>) => (this.categorias = res.body || []));
-
       this.pedidoService.query().subscribe((res: HttpResponse<IPedido[]>) => (this.pedidos = res.body || []));
     });
   }
@@ -67,21 +68,20 @@ export class ProdutoUpdateComponent implements OnInit {
 
   save(): void {
     this.isSaving = true;
-    const produto = this.createFromForm();
-    if (produto.id !== undefined) {
-      this.subscribeToSaveResponse(this.produtoService.update(produto));
+    this.produto = this.createFromForm();
+    if (this.produto.id !== undefined) {
+      this.subscribeToSaveResponse(this.produtoService.update(this.produto));
     } else {
-      this.subscribeToSaveResponse(this.produtoService.create(produto));
+      this.subscribeToSaveResponse(this.produtoService.create(this.produto));
     }
   }
 
   private createFromForm(): IProduto {
     return {
       ...new Produto(),
-      id: this.editForm.get(['id'])!.value,
       nome: this.editForm.get(['nome'])!.value,
       preco: this.editForm.get(['preco'])!.value,
-      status: this.editForm.get(['status'])!.value,
+      status: true,
       categorias: this.editForm.get(['categorias'])!.value,
       pedidos: this.editForm.get(['pedidos'])!.value,
     };

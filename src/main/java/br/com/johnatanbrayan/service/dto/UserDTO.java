@@ -6,6 +6,7 @@ import br.com.johnatanbrayan.domain.Authority;
 import br.com.johnatanbrayan.domain.Cliente;
 import br.com.johnatanbrayan.domain.User;
 
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.time.Instant;
 import java.util.Set;
@@ -51,6 +52,7 @@ public class UserDTO {
 
     private Set<String> authorities;
 
+    @Valid
     private Cliente cliente;
 
     public UserDTO() {

@@ -3,6 +3,8 @@ package br.com.johnatanbrayan.domain;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -16,6 +18,7 @@ public class Cliente {
     @Column(name = "data_nascimento", nullable = false)
     private LocalDate dataNascimento;
 
+    @CPF
     @NotNull
     @Column(name = "cpf", nullable = false)
     private String cpf;
@@ -53,8 +56,8 @@ public class Cliente {
     private String cidade;
 
     @NotNull
-    @Size(max = 8)
-    @Column(name = "cep", length = 8, nullable = false)
+    @Size(max = 9)
+    @Column(name = "cep", length = 9, nullable = false)
     private String cep;
 
     @NotNull

@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './pagamento-detail.component.html',
 })
 export class PagamentoDetailComponent implements OnInit {
-  pagamento: IPagamento | null = null;
+  pagamento!: IPagamento;
 
   constructor(protected activatedRoute: ActivatedRoute) {}
 

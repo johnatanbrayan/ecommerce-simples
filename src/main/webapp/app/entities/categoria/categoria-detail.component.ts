@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './categoria-detail.component.html',
 })
 export class CategoriaDetailComponent implements OnInit {
-  categoria: ICategoria | null = null;
+  categoria!: ICategoria;
 
   constructor(protected activatedRoute: ActivatedRoute) {}
 

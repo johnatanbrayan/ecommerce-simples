@@ -3,4 +3,4 @@ id;login;password_hash;first_name;last_name;email;image_url;activated;lang_key;c
 2;anonymoususer;$2a$10$j8S5d7Sr7.8VTOYNviDPOeWX8KcYILUVJBsYV83Y5NtECayypx9lO;Anonymous;User;anonymous@localhost;;true;pt-br;system;system
 3;ecommercesimples;$2a$10$kHaGjNy.D.9YWC.7VIE2MuBHeecRz6vFq0yh/JbR5tw3LmwDPp9Sm;EcommerceSimples;Ecommerce Simples;ecommercesimples@localhost;;true;pt-br;system;system
 4;admin;$2a$10$gSAhZrxMllrbgj/kkK9UceBPpChGWJA7SYIb1Mqo.n5aNLq1/oRrC;Administrator;Administrator;admin@localhost;;true;pt-br;system;system
-5;associado;$2a$10$BpKM1xgJ/ZVQ6P43aKV3B.vnOBuQEbooED6eOz2k7EIU4cJLpb44K;Associado;Associado;associado@localhost;;true;pt-br;system;system
+5;cliente;$2a$10$gSAhZrxMllrbgj/kkK9UceBPpChGWJA7SYIb1Mqo.n5aNLq1/oRrC;Cliente;Cliente;cliente@localhost;;true;pt-br;system;system

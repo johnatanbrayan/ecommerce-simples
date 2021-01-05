@@ -1,11 +1,5 @@
 id;nome;preco;status
-1;Specialist;77317;true
-2;Dynamic Strategist;94195;true
-3;Savings Account Antarctica (the territory South of 60 deg S) Soft;17657;false
-4;silver Saint Helena Pound Customizable;89253;false
-5;hard drive Home Loan Account 1080p;6232;false
-6;reintermediate;41128;true
-7;1080p Technician syndicate;89025;false
-8;Credit Card Account Centralized;85704;false
-9;Peru;75467;true
-10;Customer encoding;17340;false
+1;Celular;17657.00;true
+2;Notebook;2000.00;true
+3;Máquina de lavar;2500.00;true
+4;Tablet;1000.00;false

@@ -85,13 +85,11 @@ export class UserManagementComponent implements OnInit, OnDestroy {
 
   private loadAll(): void {
     this.userService
-      .query(
-        {
-          page: this.page - 1,
-          size: this.itemsPerPage,
-          sort: this.sort(),
-        },
-      )
+      .findByRole('ROLE_ADMIN', {
+        page: this.page - 1,
+        size: this.itemsPerPage,
+        sort: this.sort(),
+      })
       .subscribe((res: HttpResponse<User[]>) => this.onSuccess(res.body, res.headers));
   }
 

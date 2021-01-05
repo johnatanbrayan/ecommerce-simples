@@ -1,6 +1,8 @@
+import { HttpResponse } from '@angular/common/http';
+import { flatMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot, Routes } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Resolve, ActivatedRouteSnapshot, Routes, Router } from '@angular/router';
+import { Observable, of, EMPTY } from 'rxjs';
 
 import { User, IUser } from 'app/core/user/user.model';
 import { UserService } from 'app/core/user/user.service';
@@ -10,12 +12,21 @@ import { UserManagementUpdateComponent } from './user-management-update.componen
 
 @Injectable({ providedIn: 'root' })
 export class UserManagementResolve implements Resolve<IUser> {
-  constructor(private service: UserService) {}
+  constructor(private service: UserService, private router: Router) {}
 
-  resolve(route: ActivatedRouteSnapshot): Observable<IUser> {
+  resolve(route: ActivatedRouteSnapshot): Observable<IUser> | Observable<never> {
     const id = route.params['login'];
     if (id) {
-      return this.service.find(id);
+      return this.service.find(id).pipe(
+        flatMap((user: HttpResponse<User>) => {
+          if (user.body) {
+            return of(user.body);
+          } else {
+            this.router.navigate(['404']);
+            return EMPTY;
+          }
+        })
+      );
     }
     return of(new User());
   }

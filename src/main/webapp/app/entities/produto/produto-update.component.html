@@ -30,7 +30,7 @@
                     <div *ngIf="editForm.get('preco')!.invalid && (editForm.get('preco')!.dirty || editForm.get('preco')!.touched)">
                         <small class="form-text text-danger"
                                 *ngIf="editForm.get('preco')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
+                            This field is required.
                         </small>
                         <small class="form-text text-danger"
                             [hidden]="!editForm.get('preco')?.errors?.number" jhiTranslate="entity.validation.number">

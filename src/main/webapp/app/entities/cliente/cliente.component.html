@@ -4,6 +4,8 @@
         <button id="jh-create-entity" class="btn btn-primary redondo float-right jh-create-entity create-cliente"
             [routerLink]="['/cliente/new']">
             <fa-icon icon="plus"></fa-icon>
+            <!-- <fa-icon [icon]="['fa' ,'plus']"></fa-icon> -->
+            <!-- <fa-icon [icon]="['fas', 'square']"></fa-icon> -->
         </button>
     </h2>
 
@@ -18,7 +20,7 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-                    <th scope="col" jhiSortBy="nome"><span jhiTranslate="ecommercesimplesApp.userManagement.firstName">Nome</span>
+                    <th scope="col" jhiSortBy="nome"><span jhiTranslate="userManagement.firstName">Nome</span>
                         <fa-icon icon="sort"></fa-icon>
                     </th>
                     <th scope="col"></th>

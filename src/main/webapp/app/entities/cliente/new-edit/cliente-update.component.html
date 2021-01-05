@@ -1,4 +1,4 @@
-<div class="card shadow-lg">
+<div class="card card-theme">
     <div class="card-header">
         <span class="modal-title" id="upadate" *ngIf="cliente.id">
             <h4 class="pt-2">Editando Cliente</h4>
@@ -23,7 +23,7 @@
                         <div class="form-group col-md-6">
                             <!-- nome -->
                             <label class="form-control-label" for="firstName"
-                                jhiTranslate="ecommercesimplesApp.userManagement.firstName">FirstName</label>
+                                jhiTranslate="userManagement.firstName">FirstName</label>
                             <input type="text" class="form-control" id="firstName" name="firstName"
                                 placeholder="{{ 'global.form.fistname.placeholder' | translate }}" formControlName="firstName"
                                 required>
@@ -65,7 +65,7 @@
                         </div>
 
                         <div class="form-group col-md-3">
-                            <label class="form-control-label" jhiTranslate="ecommercesimplesApp.cliente.dataDeNascimento"
+                            <label class="form-control-label" jhiTranslate="ecommercesimplesApp.cliente.dataNascimento"
                                 for="field_dataNascimento">Date of birth</label>
                             <input id="field_dataNascimento" type="text" placeholder="dd/mm/yyyy" class="form-control"
                                 name="field_dataNascimento" #db="bsDatepicker" bsDatepicker (keyup)="db.toggle()"
@@ -86,7 +86,7 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label class="form-control-label" for="email"
-                                jhiTranslate="ecommercesimplesApp.userManagement.email">Email</label>
+                                jhiTranslate="userManagement.email">Email</label>
                             <input type="email" class="form-control" id="email" name="email"
                                 placeholder="{{ 'global.form.email.placeholder' | translate }}" formControlName="email"
                                 minlength="5" maxlength="100" required>
@@ -262,7 +262,7 @@
             </div>
         </div>
 
-        <div class="card-footer">
+        <div class="card-footer mr-2">
             <button type="button" id="cancel-save" class="btn btn-secondary float-left" (click)="previousState()">
                 <fa-icon [icon]="'chevron-left'"></fa-icon>&nbsp;<span  jhiTranslate="entity.action.back">Voltar</span>
             </button>

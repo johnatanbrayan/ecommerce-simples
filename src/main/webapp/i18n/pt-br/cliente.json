@@ -16,8 +16,8 @@
       "detail": {
         "title": "Cliente"
       },
-      "dataNascimento": "Data Nascimento",
-      "cpf": "Cpf",
+      "dataNascimento": "Data de Nascimento",
+      "cpf": "CPF",
       "fone": "Fone",
       "celular": "Celular",
       "logradouro": "Logradouro",

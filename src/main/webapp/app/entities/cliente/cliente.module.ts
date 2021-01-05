@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { ClienteComponent } from './cliente.component';
-import { ClienteDetailComponent } from './detail/cliente-detail.component';
+// import { ClienteDetailComponent } from './detail/cliente-detail.component';
 import { ClienteUpdateComponent } from './new-edit/cliente-update.component';
 import { ClienteDeleteDialogComponent } from './delete/cliente-delete-dialog.component';
 import { clienteRoute } from './cliente.route';
@@ -16,15 +16,20 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 const ENTITY_STATES = [...clienteRoute];
 @NgModule({
-    imports: [
-        EcommercesimplesSharedModule,
-        RouterModule.forChild(ENTITY_STATES),
-        TextMaskModule,
-        NgxViacepModule,
-        BsDatepickerModule.forRoot(),
-        NgSelectModule,
-    ],
-    declarations: [ClienteComponent, ClienteDetailComponent, ClienteUpdateComponent, ClienteDeleteDialogComponent],
-    entryComponents: [ClienteDeleteDialogComponent],
+  imports: [
+    EcommercesimplesSharedModule,
+    RouterModule.forChild(ENTITY_STATES),
+    TextMaskModule,
+    NgxViacepModule,
+    BsDatepickerModule.forRoot(),
+    NgSelectModule,
+  ],
+  declarations: [
+    ClienteComponent,
+    // ClienteDetailComponent,
+    ClienteUpdateComponent,
+    ClienteDeleteDialogComponent,
+  ],
+  entryComponents: [ClienteDeleteDialogComponent],
 })
 export class EcommercesimplesClienteModule {}

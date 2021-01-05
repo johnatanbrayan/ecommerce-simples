@@ -77,10 +77,10 @@ import {
   faClipboardList,
   faCalendarMinus,
   faCalendarPlus,
-  faChevronLeft,
+  faPrint,
   faBoxOpen,
+  faMoneyBillWave,
   faCubes,
-  faMoneyBillWave
 } from '@fortawesome/free-solid-svg-icons';
 
 // Adds the SVG icon to the library so you can use it in your page
@@ -158,8 +158,8 @@ library.add(
   faCalendarAlt,
   faCalendarPlus,
   faCalendarMinus,
-  faChevronLeft,
+  faPrint,
   faBoxOpen,
-  faCubes,
-  faMoneyBillWave
+  faMoneyBillWave,
+  faCubes
 );

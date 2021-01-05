@@ -90,6 +90,11 @@ import {
   faCreditCard,
   faCoins,
   faReceipt,
+  faChevronLeft,
+  faPrint,
+  faBoxOpen,
+  faMoneyBillWave,
+  faCubes,
 } from '@fortawesome/free-solid-svg-icons';
 
 import { faAddressCard } from '@fortawesome/free-regular-svg-icons';
@@ -198,4 +203,9 @@ export const fontAwesomeIcons = [
   faChevronUp,
   faCoins,
   faReceipt,
+  faChevronLeft,
+  faPrint,
+  faBoxOpen,
+  faMoneyBillWave,
+  faCubes,
 ];
